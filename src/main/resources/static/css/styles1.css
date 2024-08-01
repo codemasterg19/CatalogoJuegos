@@ -1,0 +1,64 @@
+ body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+        .navbar {
+            background-color: #282c34;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .navbar-nav .nav-link {
+            color: #61dafb !important;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ffffff !important;
+        }
+        .hero {
+            background: url('/imagenes/hero-bg.jpg') no-repeat center center;
+            background-size: cover;
+            color: #fff;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .hero p {
+            font-size: 1.25rem;
+        }
+        .btn-primary {
+            background-color: #61dafb;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #21a1f1;
+        }
+        .destacados .card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .destacados .card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        .destacados .card-body {
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        .destacados .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        footer {
+            background-color: #282c34;
+            color: #ffffff;
+        }
+        footer p {
+            margin: 0;
+        }

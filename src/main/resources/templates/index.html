@@ -1,82 +1,91 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
 <head>
-    <title>Catálogo de Videojuegos</title>
-    <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Videojuegos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles1.css"/>
 </head>
 <body>
 <header>
-    <div class="navbar">
-        <a href="/" class="logo">Catálogo de Videojuegos</a>
-        <nav>
-            <a href="/juegos">Juegos</a>
-            <a href="/contacto">Contacto</a>
-            <a href="/coleccion">Mi Colección</a>
-        </nav>
+    <div class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="/">Catálogo de Videojuegos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/juegos">Juegos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contacto">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/coleccion">Mi Colección</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </header>
 
 <main>
     <section class="hero">
-        <h1>Descubre los Mejores Videojuegos</h1>
-        <p>Explora nuestra selección de juegos destacados, nuevos lanzamientos y mucho más.</p>
-        <a href="/juegos" class="btn-primary">Explorar Catálogo</a>
-    </section>
-
-    <section class="destacados">
-        <h2>Juegos Destacados</h2>
-        <div class="card-container">
-            <!-- Reemplaza con Thymeleaf para obtener datos dinámicos -->
-            <div class="card">
-                <img src="url-imagen-juego-1" alt="Juego 1"/>
-                <h3>Juego Destacado 1</h3>
-                <p>Descripción breve del juego.</p>
-                <a href="/juego/1" class="btn-secondary">Ver Detalles</a>
-            </div>
-            <div class="card">
-                <img src="url-imagen-juego-2" alt="Juego 2"/>
-                <h3>Juego Destacado 2</h3>
-                <p>Descripción breve del juego.</p>
-                <a href="/juego/2" class="btn-secondary">Ver Detalles</a>
-            </div>
-            <div class="card">
-                <img src="url-imagen-juego-3" alt="Juego 3"/>
-                <h3>Juego Destacado 3</h3>
-                <p>Descripción breve del juego.</p>
-                <a href="/juego/3" class="btn-secondary">Ver Detalles</a>
-            </div>
+        <div class="container">
+            <h1 class="display-4">Descubre los Mejores Videojuegos</h1>
+            <p class="lead">Explora nuestra selección de juegos destacados, nuevos lanzamientos y mucho más.</p>
+            <a href="/juegos" class="btn btn-primary btn-lg">Explorar Catálogo</a>
         </div>
     </section>
 
-    <section class="nuevos-lanzamientos">
-        <h2>Nuevo en el Catálogo</h2>
-        <div class="card-container">
-            <!-- Reemplaza con Thymeleaf para obtener datos dinámicos -->
-            <div class="card">
-                <img src="url-imagen-nuevo-1" alt="Nuevo Juego 1"/>
-                <h3>Nuevo Juego 1</h3>
-                <p>Descripción breve del nuevo juego.</p>
-                <a href="/juego/4" class="btn-secondary">Ver Detalles</a>
-            </div>
-            <div class="card">
-                <img src="url-imagen-nuevo-2" alt="Nuevo Juego 2"/>
-                <h3>Nuevo Juego 2</h3>
-                <p>Descripción breve del nuevo juego.</p>
-                <a href="/juego/5" class="btn-secondary">Ver Detalles</a>
-            </div>
-            <div class="card">
-                <img src="url-imagen-nuevo-3" alt="Nuevo Juego 3"/>
-                <h3>Nuevo Juego 3</h3>
-                <p>Descripción breve del nuevo juego.</p>
-                <a href="/juego/6" class="btn-secondary">Ver Detalles</a>
+    <section class="destacados py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Juegos Destacados</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/imagenes/apexlegends.jpg" class="card-img-top" alt="ApexLegends">
+                        <div class="card-body">
+                            <h5 class="card-title">ApexLegends</h5>
+                            <p class="card-text">Descripción breve del juego.</p>
+                            <a href="/juego/1" class="btn btn-secondary">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://i.blogs.es/a661d4/star-wars/1366_2000.webp" class="card-img-top" alt="Fallen Order">
+                        <div class="card-body">
+                            <h5 class="card-title">Fallen Order</h5>
+                            <p class="card-text">Descripción breve del juego.</p>
+                            <a href="/juego/2" class="btn btn-secondary">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/imagenes/marvelH.jpg" class="card-img-top" alt="Marvel Heroes">
+                        <div class="card-body">
+                            <h5 class="card-title">Marvel Heroes</h5>
+                            <p class="card-text">Descripción breve del juego.</p>
+                            <a href="/juego/3" class="btn btn-secondary">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 </main>
 
-<footer>
-    <p>&copy; 2024 Catálogo de Videojuegos. Todos los derechos reservados.</p>
+<footer class="py-3">
+    <div class="container text-center">
+        <p>&copy; 2024 Catálogo de Videojuegos. Todos los derechos reservados.</p>
+    </div>
 </footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
