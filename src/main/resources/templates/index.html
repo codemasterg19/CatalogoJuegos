@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Catálogo de Videojuegos</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<header>
+    <div class="navbar">
+        <a href="/" class="logo">Catálogo de Videojuegos</a>
+        <nav>
+            <a href="/juegos">Juegos</a>
+            <a href="/contacto">Contacto</a>
+            <a href="/coleccion">Mi Colección</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <h1>Descubre los Mejores Videojuegos</h1>
+        <p>Explora nuestra selección de juegos destacados, nuevos lanzamientos y mucho más.</p>
+        <a href="/juegos" class="btn-primary">Explorar Catálogo</a>
+    </section>
+
+    <section class="destacados">
+        <h2>Juegos Destacados</h2>
+        <div class="card-container">
+            <!-- Reemplaza con Thymeleaf para obtener datos dinámicos -->
+            <div class="card">
+                <img src="url-imagen-juego-1" alt="Juego 1"/>
+                <h3>Juego Destacado 1</h3>
+                <p>Descripción breve del juego.</p>
+                <a href="/juego/1" class="btn-secondary">Ver Detalles</a>
+            </div>
+            <div class="card">
+                <img src="url-imagen-juego-2" alt="Juego 2"/>
+                <h3>Juego Destacado 2</h3>
+                <p>Descripción breve del juego.</p>
+                <a href="/juego/2" class="btn-secondary">Ver Detalles</a>
+            </div>
+            <div class="card">
+                <img src="url-imagen-juego-3" alt="Juego 3"/>
+                <h3>Juego Destacado 3</h3>
+                <p>Descripción breve del juego.</p>
+                <a href="/juego/3" class="btn-secondary">Ver Detalles</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="nuevos-lanzamientos">
+        <h2>Nuevo en el Catálogo</h2>
+        <div class="card-container">
+            <!-- Reemplaza con Thymeleaf para obtener datos dinámicos -->
+            <div class="card">
+                <img src="url-imagen-nuevo-1" alt="Nuevo Juego 1"/>
+                <h3>Nuevo Juego 1</h3>
+                <p>Descripción breve del nuevo juego.</p>
+                <a href="/juego/4" class="btn-secondary">Ver Detalles</a>
+            </div>
+            <div class="card">
+                <img src="url-imagen-nuevo-2" alt="Nuevo Juego 2"/>
+                <h3>Nuevo Juego 2</h3>
+                <p>Descripción breve del nuevo juego.</p>
+                <a href="/juego/5" class="btn-secondary">Ver Detalles</a>
+            </div>
+            <div class="card">
+                <img src="url-imagen-nuevo-3" alt="Nuevo Juego 3"/>
+                <h3>Nuevo Juego 3</h3>
+                <p>Descripción breve del nuevo juego.</p>
+                <a href="/juego/6" class="btn-secondary">Ver Detalles</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Catálogo de Videojuegos. Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>
