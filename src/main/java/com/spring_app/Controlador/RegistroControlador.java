@@ -17,6 +17,10 @@ public class RegistroControlador {
     public String mostrarCatalogo(Model model) {
         return "catalogo";
     }
+    @GetMapping("/index")
+    public String mostrarindex(Model model) {
+        return "index";
+    }
 
     @GetMapping("/registro")
     public String formularioAutor(Model model){

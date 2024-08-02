@@ -17,10 +17,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/juegos">Juegos</a>
+                    <a class="nav-link" href="/index">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/catalogo">Catalogo</a>
+                    <a class="nav-link" href="/catalogo">Catálogo</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/registro">Registro</a>
@@ -39,6 +39,39 @@
         </div>
     </section>
 
+    <section class="carousel-section">
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <iframe class="carousel-video" src="https://www.youtube.com/embed/oQtHENM_GZU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe class="carousel-video" src="https://www.youtube.com/embed/0GLbwkfhYZk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe class="carousel-video" src="https://www.youtube.com/embed/eDSrI1MtTcg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe class="carousel-video" src="https://www.youtube.com/embed/another_video_id" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
+
     <section class="destacados py-5">
         <div class="container">
             <h2 class="text-center mb-4">Juegos Destacados</h2>
@@ -48,7 +81,7 @@
                         <img src="/imagenes/apexlegends.jpg" class="card-img-top" alt="ApexLegends">
                         <div class="card-body">
                             <h5 class="card-title">ApexLegends</h5>
-                            <p class="card-text">Descripción breve del juego.</p>
+                            <p class="card-text">Es un videojuego gratuito de battle royale y hero shooter en primera persona, desarrollado por Respawn Entertainment y publicado por Electronic Arts. Se lanzó en 2019 y se destaca por su jugabilidad en equipos, donde cada personaje tiene habilidades únicas que contribuyen al éxito del grupo</p>
                             <a href="/juego/1" class="btn btn-secondary">Ver Detalles</a>
                         </div>
                     </div>
@@ -58,7 +91,7 @@
                         <img src="https://i.blogs.es/a661d4/star-wars/1366_2000.webp" class="card-img-top" alt="Fallen Order">
                         <div class="card-body">
                             <h5 class="card-title">Fallen Order</h5>
-                            <p class="card-text">Descripción breve del juego.</p>
+                            <p class="card-text">Un videojuego de acción y aventura para un solo jugador, también desarrollado por Respawn Entertainment. Ambientado en el universo de Star Wars, la historia se sitúa entre los episodios III y IV de la saga, y sigue a Cal Kestis, un joven padawan que sobrevivió a la Orden 66 y busca su camino como Jedi</p>
                             <a href="/juego/2" class="btn btn-secondary">Ver Detalles</a>
                         </div>
                     </div>
@@ -68,7 +101,7 @@
                         <img src="/imagenes/marvelH.jpg" class="card-img-top" alt="Marvel Heroes">
                         <div class="card-body">
                             <h5 class="card-title">Marvel Heroes</h5>
-                            <p class="card-text">Descripción breve del juego.</p>
+                            <p  class="card-text  ">No es un videojuego específico, sino un término que abarca a los numerosos personajes de Marvel, conocidos por sus apariciones en cómics, películas y videojuegos. Los héroes de Marvel incluyen a personajes icónicos como Iron Man, Capitán América, Thor y muchos otros, cada uno con sus propias historias y poderes que los hacen únicos en el vasto universo Marvel</p>
                             <a href="/juego/3" class="btn btn-secondary">Ver Detalles</a>
                         </div>
                     </div>
@@ -87,5 +120,17 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // JavaScript para pausar videos al cambiar de slide
+    $('#carouselExampleIndicators').on('slide.bs.carousel', function () {
+        var $active = $('.carousel-item.active').find('iframe');
+        $active.each(function () {
+            var src = $(this).attr('src');
+            $(this).attr('src', '');
+            $(this).attr('src', src);
+        });
+    });
+</script>
 </body>
 </html>
+
