@@ -25,7 +25,7 @@ public class RegistroControlador {
             return "registro";
         }else{
 
-            return "registro";
+            return "index";
         }
     }
 }
