@@ -90,13 +90,14 @@ h3 {
 
 
 .inputBox {
-    position: relative
+    position: relative;
+    color: white;
 }
 
 .inputBox span {
     position: absolute;
     top: 10px;
-    color: #262626
+    color: white;
 }
 
 .loginBox input[type="submit"] {

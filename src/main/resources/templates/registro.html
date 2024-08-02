@@ -14,23 +14,27 @@
     <form th:action="@{/registrarUsuario}" method="post" th:object="${usuario}">
         <div class="inputBox">
             <input type="text" th:field="*{nombre}" placeholder="Nombre" id="id-nombre">
-            <span  th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"> Nombre incorrecto </span>
+
         </div>
+        <span class="inputBox" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"> Nombre incorrecto </span>
 
         <div class="inputBox">
             <input type="text" th:field="*{usuario}" placeholder="Usuario" id="id-usuario">
-            <span th:if="${#fields.hasErrors('usuario')}" th:errors="*{usuario}"> Usuario incorrecto </span>
+
         </div>
+        <span class="inputBox" th:if="${#fields.hasErrors('usuario')}" th:errors="*{usuario}"> Usuario incorrecto </span>
+
 
         <div class="inputBox">
             <input type="password" th:field="*{password}" placeholder="Contraseña" id="id-password">
-            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"> La contraseña es incorrecta </span>
         </div>
+        <span class="inputBox" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"> La contraseña es incorrecta </span>
 
         <div class="inputBox">
             <input type="email" th:field="*{email}" placeholder="Correo" id="id-email">
-            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"> Correo incorrecto </span>
+
         </div>
+        <span class="inputBox" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"> Correo incorrecto </span>
 
         <input type="submit" name="Registro" value="Registro">
     </form>

@@ -15,7 +15,7 @@ public class Usuario {
 
     @Size(min=3,max=10)
     @NotBlank(message = "El nombre no puede estar vacío")
-    @Pattern(regexp = "[A-Za-z ]+", message = "El nombre solo puede contener letras y espacios")
+    @Pattern(regexp = "[A-Za-z ]+", message = "El usuario solo puede contener letras y espacios")
     private String usuario;
 
     @NotNull

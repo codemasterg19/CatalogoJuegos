@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class RegistroControlador {
 
+    @GetMapping("/catalogo")
+    public String mostrarCatalogo(Model model) {
+        return "catalogo";
+    }
+
     @GetMapping("/registro")
     public String formularioAutor(Model model){
         model.addAttribute("usuario",new Usuario());

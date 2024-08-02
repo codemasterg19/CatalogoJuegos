@@ -17,15 +17,6 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="juego : ${juegos}">
-        <td th:text="${juego.nombre}"></td>
-        <td th:text="${juego.descripcion}"></td>
-        <td th:text="${juego.genero}"></td>
-        <td th:text="${juego.plataforma}"></td>
-        <td th:text="${juego.anoLanzamiento}"></td>
-        <td th:text="${juego.calificacion}"></td>
-        <td><a th:href="@{/juego/{id}(id=${juego.id})}">Ver Detalles</a></td>
-    </tr>
     </tbody>
 </table>
 </body>
