@@ -11,7 +11,7 @@
 
 <div class="loginBox"> <img class="user" src="https://i.ibb.co/yVGxFPR/2.png" height="100px" width="100px">
     <h3>Registrate aqui</h3>
-    <form th:action="@{/registrarUsuario}" method="post" th:object="${usuario}">
+    <form th:action="@{/guardar}" method="post" th:object="${usuario}">
         <div class="inputBox">
             <input type="text" th:field="*{nombre}" placeholder="Nombre" id="id-nombre">
 
@@ -19,11 +19,10 @@
         <span class="inputBox" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"> Nombre incorrecto </span>
 
         <div class="inputBox">
-            <input type="text" th:field="*{usuario}" placeholder="Usuario" id="id-usuario">
+            <input type="text" th:field="*{user}" placeholder="Usuario" id="id-user">
 
         </div>
-        <span class="inputBox" th:if="${#fields.hasErrors('usuario')}" th:errors="*{usuario}"> Usuario incorrecto </span>
-
+        <span class="inputBox" th:if="${#fields.hasErrors('user')}" th:errors="*{user}"> Usuario incorrecto </span>
 
         <div class="inputBox">
             <input type="password" th:field="*{password}" placeholder="Contraseña" id="id-password">
