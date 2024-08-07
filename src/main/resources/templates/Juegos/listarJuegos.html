@@ -1,10 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Videojuegos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/stylecat.css"/>
 </head>
 <body>
-$END$
+<header>
+    <div class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="/">Catálogo de Videojuegos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/index">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/catalogo">Catálogo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/registro">Registro</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Catálogo de Videojuegos</h2>
+
+    <!-- Catálogo de Videojuegos -->
+    <div class="row">
+        <!-- Ejemplo de videojuego -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Imagen del videojuego">
+                <div class="card-body">
+                    <h5 class="card-title">Título del Videojuego</h5>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#gameModal">Ver más detalles</a>
+                </div>
+            </div>
+        </div>
+        <!-- Agrega más tarjetas de videojuego aquí -->
+    </div>
+</div>
+
+<!-- Modal para detalles del videojuego -->
+<div class="modal fade" id="gameModal" tabindex="-1" role="dialog" aria-labelledby="gameModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="gameModalLabel">Título del Videojuego</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-16by9 mb-3">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+                </div>
+                <p><strong>Descripción:</strong> Aquí va la descripción del videojuego.</p>
+                <p><strong>Precio:</strong> $XX.XX</p>
+                <p><strong>Requisitos:</strong> Aquí van los requisitos del juego.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <a href="ENLACE_DE_COMPRA" class="btn btn-primary">Obtener</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<footer class="py-3">
+    <div class="container text-center">
+        <p>&copy; 2024 Catálogo de Videojuegos. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
