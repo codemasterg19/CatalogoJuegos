@@ -31,50 +31,50 @@
 </header>
 
 <div class="container mt-4">
+    <!-- Título Principal -->
     <h2 class="text-center mb-4">Catálogo de Videojuegos</h2>
 
     <!-- Catálogo de Videojuegos -->
     <div class="row">
         <!-- Ejemplo de videojuego -->
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4" th:each="juego : ${juegos}">
             <div class="card">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Imagen del videojuego">
+                <!-- Mostrar la imagen cargada desde la base de datos -->
+                <img th:src="@{'/images/' + ${juego.imagen}}" class="card-img-top" alt="Imagen del videojuego">
                 <div class="card-body">
-                    <h5 class="card-title">Título del Videojuego</h5>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#gameModal">Ver más detalles</a>
+                    <h5 class="card-title" th:text="${juego.titulo}"></h5>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" th:data-target="'#gameModal_' + ${juego.id}">Ver más detalles</a>
                 </div>
             </div>
         </div>
-        <!-- Agrega más tarjetas de videojuego aquí -->
     </div>
-</div>
 
-<!-- Modal para detalles del videojuego -->
-<div class="modal fade" id="gameModal" tabindex="-1" role="dialog" aria-labelledby="gameModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="gameModalLabel">Título del Videojuego</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="embed-responsive embed-responsive-16by9 mb-3">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+    <!-- Modal para detalles del videojuego -->
+    <div th:each="juego : ${juegos}" th:id="'gameModal_' + ${juego.id}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gameModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" th:text="${juego.titulo}"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <p><strong>Descripción:</strong> Aquí va la descripción del videojuego.</p>
-                <p><strong>Precio:</strong> $XX.XX</p>
-                <p><strong>Requisitos:</strong> Aquí van los requisitos del juego.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <a href="ENLACE_DE_COMPRA" class="btn btn-primary">Obtener</a>
+                <div class="modal-body">
+                    <!-- Mostrar el video de YouTube embebido -->
+                    <div class="embed-responsive embed-responsive-16by9 mb-3">
+                        <iframe class="embed-responsive-item" th:src="'https://www.youtube.com/embed/' + ${#strings.substring(juego.video, 17, 28)}" allowfullscreen></iframe>
+                    </div>
+                    <p><strong>Descripción:</strong> <span th:text="${juego.descripcion}"></span></p>
+                    <p><strong>Precio:</strong> $<span th:text="${juego.precio}"></span></p>
+                    <p><strong>Requisitos:</strong> <span th:text="${juego.plataforma}"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <a href="#" class="btn btn-primary">Obtener</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
 
 <h2 class="text-center mb-4">Lista de Juegos</h2>
 <div class="table-responsive">
