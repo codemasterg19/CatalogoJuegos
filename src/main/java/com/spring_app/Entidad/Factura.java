@@ -15,7 +15,6 @@ public class Factura {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(unique = true, nullable = false)
     private String numeroFactura;
     private LocalDate fecha;
     private Double precio_total;
@@ -25,7 +24,7 @@ public class Factura {
     private Juego juego;
 
     @ManyToOne
-    @JoinColumn(name="id_juego")
+    @JoinColumn(name="id_usuario")
     private  Usuario usuario;
 
 }

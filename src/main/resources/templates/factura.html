@@ -5,17 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Factura</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/stylecat.css"/>
     <link rel="stylesheet" type="text/css" href="/css/factura.css"/>
 </head>
 <body>
+<header>
+    <div class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="/">Catálogo de Videojuegos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/index">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/juegos">Catálogo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/registro">Registro</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/editarJuego" class="btn btn-warning">Editar Juego</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</header>
+<hr>
+<hr>
+
 <div class="container-fluid">
     <div id="ui-view" data-select2-id="ui-view"><div><div class="card">
-        <div class="card-header">Invoice
-            <strong>#BBB-10010110101938</strong>
+        <div class="card-header">Factura
+            <strong></strong>
             <a class="btn btn-sm btn-secondary float-right mr-1 d-print-none" href="#" onclick="javascript:window.print();" data-abc="true">
-                <i class="fa fa-print"></i> Print</a>
+                <i class="fa fa-print"></i> Imprimir</a>
             <a class="btn btn-sm btn-info float-right mr-1 d-print-none" href="#" data-abc="true">
-                <i class="fa fa-save"></i> Save</a>
+                <i class="fa fa-save"></i> Guardar</a>
         </div>
         <div class="card-body">
             <div class="row mb-4">
@@ -75,54 +105,20 @@
                         <td class="center" th:text="${juego.plataforma}"></td>
                         <td class="right"  th:text="${juego.precio}"></td>
                     </tr>
-                    <tr>
-                        <td class="center">2</td>
-                        <td class="left">Samsung S6</td>
-                        <td class="left">Samsung S6 with extended warranty</td>
-                        <td class="center">20</td>
-                        <td class="right">$150,00</td>
-                        <td class="right">$3.000,00</td>
-                    </tr>
-                    <tr>
-                        <td class="center">2</td>
-                        <td class="left">Samsung S6</td>
-                        <td class="left">Samsung S6 with extended warranty</td>
-                        <td class="center">20</td>
-                        <td class="right">$150,00</td>
-                        <td class="right">$3.000,00</td>
-                    </tr>
                     </tbody>
                 </table>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-sm-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</div>
+                <div class="col-lg-4 col-sm-5">Compra juegos digitales al instante,Animate!!!.</div>
                 <div class="col-lg-4 col-sm-5 ml-auto">
                     <table class="table table-clear">
                         <tbody>
-                        <tr>
-                            <td class="left">
-                                <strong>Subtotal</strong>
-                            </td>
-                            <td class="right">$8.497,00</td>
-                        </tr>
-                        <tr>
-                            <td class="left">
-                                <strong>Discount (20%)</strong>
-                            </td>
-                            <td class="right">$1,699,40</td>
-                        </tr>
-                        <tr>
-                            <td class="left">
-                                <strong>VAT (10%)</strong>
-                            </td>
-                            <td class="right">$679,76</td>
-                        </tr>
-                        <tr>
+                        <tr th:each="juego : ${juegos}">
                             <td class="left">
                                 <strong>Total</strong>
                             </td>
-                            <td class="right">
-                                <strong>$7.477,36</strong>
+                            <td class="right" th:text="${juego.precio}">
+                                <strong>$</strong>
                             </td>
                         </tr>
                         </tbody>
@@ -141,6 +137,11 @@
     </div>
     </div></div>
 </div>
+<footer class="py-3 bg-dark text-white mt-auto">
+    <div class="container text-center">
+        <p>&copy; 2024 Catálogo de Videojuegos. Todos los derechos reservados.</p>
+    </div>
+</footer>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
