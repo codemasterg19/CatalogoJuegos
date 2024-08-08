@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso de Juego</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/styleFormJ.css"/>
+</head>
+<body>
+<header>
+    <div class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="/">Catálogo de Videojuegos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/index">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/juegos">Catálogo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/registro">Registro</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="form-header">
+        <h2>Ingreso de Juego</h2>
+    </div>
+    <form th:action="@{/guardarJ}" method="post" th:object="${juego}" class="needs-validation" novalidate>
+        <div class="form-group">
+            <label for="id-codigo">Código del Juego</label>
+            <input type="text" th:field="*{id}"  class="form-control" id="id-codigo"  placeholder="Código del juego" required>
+            <div class="invalid-feedback">
+                Por favor, ingrese el código del juego.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="titulo">Título del Juego</label>
+            <input type="text" th:field="*{titulo}" class="form-control" id="titulo"  placeholder="Título del juego" required>
+            <div class="invalid-feedback">
+                Por favor, ingrese el título del juego.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="genero">Género</label>
+            <select class="form-control" th:field="*{genero}" id="genero"  required>
+                <option value="">Seleccione un género</option>
+                <option value="accion">Acción</option>
+                <option value="aventura">Aventura</option>
+                <option value="deportes">Deportes</option>
+                <option value="estrategia">Estrategia</option>
+            </select>
+            <div class="invalid-feedback">
+                Por favor, seleccione un género.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="imagen">URL de la Imagen del Juego</label>
+            <input type="url" th:field="*{imagen}" class="form-control" id="imagen" placeholder="URL de la imagen" required pattern="https?://.+">
+            <div class="invalid-feedback">
+                Por favor, ingrese una URL válida para la imagen del juego.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="video">Video del Juego (YouTube)</label>
+            <input type="url" th:field="*{video}" class="form-control" id="video" name="video" placeholder="URL del video en YouTube" required pattern="https?://.+">
+            <div class="invalid-feedback">
+                Por favor, ingrese un enlace válido a un video de YouTube.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripción del Juego</label>
+            <textarea class="form-control" th:field="*{descripcion}" id="descripcion"  rows="3" placeholder="Descripción breve del juego" required></textarea>
+            <div class="invalid-feedback">
+                Por favor, ingrese una descripción del juego.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="precio">Precio del Juego</label>
+            <input type="number" th:field="*{precio}" class="form-control" id="precio"  placeholder="Precio en USD" required min="0">
+            <div class="invalid-feedback">
+                Por favor, ingrese un precio válido.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="requisitos">Requisitos del Sistema</label>
+            <textarea class="form-control" th:field="*{plataforma}" id="requisitos" rows="3" placeholder="Requisitos mínimos del sistema" required></textarea>
+            <div class="invalid-feedback">
+                Por favor, ingrese los requisitos del sistema.
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Guardar Juego</button>
+    </form>
+</div>
+
+<footer class="py-3">
+    <div class="container1 text-center">
+        <p>&copy; 2024 Catálogo de Videojuegos. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // Validación del formulario
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            var forms = document.getElementsByClassName('needs-validation');
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+</body>
+</html>

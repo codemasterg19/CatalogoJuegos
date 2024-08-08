@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/stylecat.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/factura.css"/>
+</head>
+<body>
+<header>
+    <div class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="/">Catálogo de Videojuegos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/index">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/juegos">Catálogo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/registro">Registro</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/editarJuego" class="btn btn-warning">Editar Juego</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</header>
+<hr>
+<hr>
+
+<div class="container-fluid">
+    <div id="ui-view" data-select2-id="ui-view"><div><div class="card">
+        <div class="card-header">Factura
+            <strong></strong>
+            <a class="btn btn-sm btn-secondary float-right mr-1 d-print-none" href="#" onclick="javascript:window.print();" data-abc="true">
+                <i class="fa fa-print"></i> Imprimir</a>
+            <a th:href="@{/factura/pdf}" class="btn btn-sm btn-info float-right mr-1 d-print-none" data-abc="true">
+                <i class="fa fa-save"></i> Guardar</a>
+
+        </div>
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-sm-4">
+                    <h6 class="mb-3">From:</h6>
+                    <div>
+                        <strong>BBBootstrap.com</strong>
+                    </div>
+                    <div>42, Awesome Enclave</div>
+                    <div>New York City, New york, 10394</div>
+                    <div>Email: admin@bbbootstrap.com</div>
+                    <div>Phone: +48 123 456 789</div>
+                </div>
+
+                <div class="col-sm-4">
+                    <h6 class="mb-3">To:</h6>
+                    <div>
+                        <strong>BBBootstrap.com</strong>
+                    </div>
+                    <div>42, Awesome Enclave</div>
+                    <div>New York City, New york, 10394</div>
+                    <div>Email: admin@bbbootstrap.com</div>
+                    <div>Phone: +48 123 456 789</div>
+                </div>
+
+                <div class="col-sm-4">
+                    <h6 class="mb-3">Details:</h6>
+                    <div>Invoice
+                        <strong>#BBB-10010110101938</strong>
+                    </div>
+                    <div>April 30, 2019</div>
+                    <div>VAT: NYC09090390</div>
+                    <div>Account Name: BBBootstrap Inc</div>
+                    <div>
+                        <strong>SWIFT code: 99 8888 7777 6666 5555</strong>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="table-responsive-sm">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="center">Codigo</th>
+                        <th>Juego</th>
+                        <th>Descripcion</th>
+                        <th class="center">Plataforma</th>
+                        <th class="right">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="juego : ${juegos}">
+                        <td class="center" th:text="${juego.id}"> </td>
+                        <td class="left"   th:text="${juego.titulo}"></td>
+                        <td class="left"   th:text="${juego.descripcion}"></td>
+                        <td class="center" th:text="${juego.plataforma}"></td>
+                        <td class="right"  th:text="${juego.precio}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-5">Compra juegos digitales al instante,Animate!!!.</div>
+                <div class="col-lg-4 col-sm-5 ml-auto">
+                    <table class="table table-clear">
+                        <tbody>
+                        <tr th:each="juego : ${juegos}">
+                            <td class="left">
+                                <strong>Total</strong>
+                            </td>
+                            <td class="right" th:text="${juego.precio}">
+                                <strong>$</strong>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a class="btn btn-success" href="#" data-abc="true">
+                        <i class="fa fa-usd"></i> Proceed to Payment</a>
+                    <form th:action="@{/facturas}" method="get" class="mb-4">
+                        <div class="input-group mb-3">
+                            <input type="text" id="numeroFactura" name="numeroFactura" class="form-control" placeholder="Número de Factura">
+                            <button type="submit" class="btn btn-primary">Buscar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div></div>
+</div>
+<footer class="py-3 bg-dark text-white mt-auto">
+    <div class="container text-center">
+        <p>&copy; 2024 Catálogo de Videojuegos. Todos los derechos reservados.</p>
+    </div>
+</footer>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>
