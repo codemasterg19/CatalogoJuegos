@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Videojuegos</title>
+    <title>Catálogo</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/stylecat.css"/>
 </head>
 <body>
 <header>
     <div class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="/">Catálogo de Videojuegos</a>
+        <a class="navbar-brand" href="/">Catálogo</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -20,7 +20,7 @@
                     <a class="nav-link" href="/index">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/catalogo">Catálogo</a>
+                    <a class="nav-link" href="/juegos">Catálogo</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/registro">Registro</a>
@@ -78,7 +78,47 @@
         </div>
     </div>
 
-
+    <h2 class="text-center mb-4">Lista de Juegos</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>Código</th>
+                <th>Título</th>
+                <th>Género</th>
+                <th>Imagen</th>
+                <th>Video</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Requisitos</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="juego : ${juegos}">
+                <td th:text="${juego.id}"></td>
+                <td th:text="${juego.titulo}"></td>
+                <td th:text="${juego.genero}"></td>
+                <td>
+                    <!-- Mostrar la imagen del juego usando la URL de la base de datos -->
+                    <img th:src="${juego.imagen}" alt="Imagen del videojuego" class="img-fluid" style="width: 100px; height: auto;">
+                </td>
+                <td>
+                    <!-- Mostrar el link al video de YouTube -->
+                    <a th:href="${juego.video}" target="_blank" th:text="${juego.video}"></a>
+                </td>
+                <td th:text="${juego.descripcion}"></td>
+                <td th:text="${juego.precio}"></td>
+                <td th:text="${juego.plataforma}"></td>
+                <td>
+                    <!-- Botón para ver detalles del juego -->
+                    <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" th:data-target="'#gameModal_' + ${juego.id}">Detalles</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 <footer class="py-3">
     <div class="container text-center">

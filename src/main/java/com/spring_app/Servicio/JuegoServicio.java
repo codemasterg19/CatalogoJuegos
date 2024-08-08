@@ -1,5 +1,6 @@
 package com.spring_app.Servicio;
 
+import com.spring_app.Entidad.Factura;
 import com.spring_app.Entidad.Juego;
 import com.spring_app.Repositorio.JuegoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class JuegoServicio {
@@ -35,6 +37,10 @@ public class JuegoServicio {
     public void eliminarJuego(Long id){
         juegoRepositorio.deleteById(id);
     }
+
+    /*public List<Juego> buscarJuegosPorNombre(String nombre) {
+        return juegoRepositorio.findByNombreContainingIgnoreCase(nombre);
+    }*/
 
 
 

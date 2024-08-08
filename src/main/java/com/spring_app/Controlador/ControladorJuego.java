@@ -19,7 +19,7 @@ public class ControladorJuego {
     @Autowired
     JuegoServicio juegoServicio;
 
-    /*@GetMapping("/juegos/buscar")
+  /*  @GetMapping("/juegos/buscar")
     public String buscarPorNombreConteniendo(@RequestParam String nombre, Model model) {
         List<Juego> juegos = juegoServicio.buscarJuegosPorNombre(nombre);
         model.addAttribute("juegos", juegos);
@@ -50,9 +50,9 @@ public class ControladorJuego {
 
     //Actualizar
     @GetMapping("/editarJ/{id}")
-    public String actualizarJuego(@PathVariable Long id, Model model){
+    public String actualizarJuego(@PathVariable Long id,Model model){
         Optional<Juego> juego = juegoServicio.buscarJuego(id);
-        model.addAttribute("juego", juego);
+        model.addAttribute("juego",juego);
         return "/Juegos/formularioJuego";
     }
 
@@ -63,5 +63,11 @@ public class ControladorJuego {
         return "redirect:/juegos";
     }
 
-
+    // Nuevo método para catalogoRevision
+    @GetMapping("/editarJuego")
+    public String catalogoRevision(Model model){
+        List<Juego> juegos = juegoServicio.listarJuegos();
+        model.addAttribute("juegos", juegos);
+        return "/Juegos/editarJuego";
+    }
 }
