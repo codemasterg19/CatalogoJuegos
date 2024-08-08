@@ -26,4 +26,5 @@ public class Juego {
 
     @OneToMany(mappedBy = "juego")
     private List<Factura> facturas;
+
 }
