@@ -41,12 +41,6 @@ public class RegistroControlador {
         return  "registro";
     }
 
-    @PostMapping("/guardar")
-    public String crearUsuario(Usuario usuario){
-        usuarioServicio.guadarClientes(usuario);
-        return "redirect:/index";
-    }
-
 
 
 
@@ -57,7 +51,7 @@ public class RegistroControlador {
             model.addAttribute("errors",bindingResult.getAllErrors());
             return "registro";
         }else{
-
+            usuarioServicio.guadarClientes(usuario);
             return "index";
         }
     }
