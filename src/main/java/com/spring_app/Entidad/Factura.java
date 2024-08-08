@@ -1,6 +1,5 @@
 package com.spring_app.Entidad;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 
