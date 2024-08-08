@@ -18,6 +18,10 @@ public class RegistroControlador {
     @Autowired
     UsuarioServicio usuarioServicio;
 
+    @GetMapping("/factura")
+    public String mostrarFactura(Model model) {
+        return "factura";
+    }
     @GetMapping("/catalogo")
     public String mostrarCatalogo(Model model) {
         return "catalogo";
