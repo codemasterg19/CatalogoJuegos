@@ -40,7 +40,7 @@
         <div class="col-md-4 mb-4" th:each="juego : ${juegos}">
             <div class="card">
                 <!-- Mostrar la imagen cargada desde la base de datos -->
-                <img th:src="@{'/images/' + ${juego.imagen}}" class="card-img-top" alt="Imagen del videojuego">
+                <img th:src="${juego.imagen}" class="card-img-top" alt="Imagen del videojuego">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${juego.titulo}"></h5>
                     <a href="#" class="btn btn-primary" data-toggle="modal" th:data-target="'#gameModal_' + ${juego.id}">Ver más detalles</a>
@@ -50,70 +50,75 @@
     </div>
 
     <!-- Modal para detalles del videojuego -->
-    <div th:each="juego : ${juegos}" th:id="'gameModal_' + ${juego.id}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gameModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" th:text="${juego.titulo}"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Mostrar el video de YouTube embebido -->
-                    <div class="embed-responsive embed-responsive-16by9 mb-3">
-                        <iframe class="embed-responsive-item" th:src="'https://www.youtube.com/embed/' + ${#strings.substring(juego.video, 17, 28)}" allowfullscreen></iframe>
+    <div th:each="juego : ${juegos}">
+        <div th:id="'gameModal_' + ${juego.id}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gameModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" th:text="${juego.titulo}"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <p><strong>Descripción:</strong> <span th:text="${juego.descripcion}"></span></p>
-                    <p><strong>Precio:</strong> $<span th:text="${juego.precio}"></span></p>
-                    <p><strong>Requisitos:</strong> <span th:text="${juego.plataforma}"></span></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <a href="#" class="btn btn-primary">Obtener</a>
+                    <div class="modal-body">
+                        <!-- Mostrar el video de YouTube embebido -->
+                        <div class="embed-responsive embed-responsive-16by9 mb-3">
+                            <iframe class="embed-responsive-item" th:src="'https://www.youtube.com/embed/' + ${#strings.substring(juego.video, 17, 28)}" allowfullscreen></iframe>
+                        </div>
+                        <p><strong>Descripción:</strong> <span th:text="${juego.descripcion}"></span></p>
+                        <p><strong>Precio:</strong> $<span th:text="${juego.precio}"></span></p>
+                        <p><strong>Requisitos:</strong> <span th:text="${juego.plataforma}"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <a href="#" class="btn btn-primary">Obtener</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-<h2 class="text-center mb-4">Lista de Juegos</h2>
-<div class="table-responsive">
-    <table class="table table-striped table-hover">
-        <thead class="table-dark">
-        <tr>
-            <th>Código</th>
-            <th>Titulo</th>
-            <th>Genero</th>
-            <th>Imagen</th>
-            <th>Video</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Requisitos</th>
-            <th>Acciones</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="juego: ${juegos}">
-            <td th:text="${juego.id}"></td>
-            <td th:text="${juego.titulo}"></td>
-            <td th:text="${juego.genero}"></td>
-            <td th:text="${juego.imagen}"></td>
-            <td th:text="${juego.video}"></td>
-            <td th:text="${juego.descripcion}"></td>
-            <td th:text="${juego.precio}"></td>
-            <td th:text="${juego.plataforma}"></td>
-
-
-            <td>
-
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <h2 class="text-center mb-4">Lista de Juegos</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>Código</th>
+                <th>Título</th>
+                <th>Género</th>
+                <th>Imagen</th>
+                <th>Video</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Requisitos</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="juego : ${juegos}">
+                <td th:text="${juego.id}"></td>
+                <td th:text="${juego.titulo}"></td>
+                <td th:text="${juego.genero}"></td>
+                <td>
+                    <!-- Mostrar la imagen del juego usando la URL de la base de datos -->
+                    <img th:src="${juego.imagen}" alt="Imagen del videojuego" class="img-fluid" style="width: 100px; height: auto;">
+                </td>
+                <td>
+                    <!-- Mostrar el link al video de YouTube -->
+                    <a th:href="${juego.video}" target="_blank" th:text="${juego.video}"></a>
+                </td>
+                <td th:text="${juego.descripcion}"></td>
+                <td th:text="${juego.precio}"></td>
+                <td th:text="${juego.plataforma}"></td>
+                <td>
+                    <!-- Botón para ver detalles del juego -->
+                    <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" th:data-target="'#gameModal_' + ${juego.id}">Detalles</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-
-
 
 <footer class="py-3">
     <div class="container text-center">

@@ -31,117 +31,54 @@
 </header>
 
 <div class="container mt-4">
+    <!-- Título Principal -->
     <h2 class="text-center mb-4">Catálogo de Videojuegos</h2>
 
-    <!-- Barra de búsqueda y filtros -->
-    <div class="mb-4">
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Buscar juegos" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-        </form>
-        <div class="mt-3">
-            <h5>Filtrar por:</h5>
-            <form>
-                <div class="form-group">
-                    <label for="genre">Género:</label>
-                    <select class="form-control" id="genre">
-                        <option value="">Todos</option>
-                        <option value="accion">Acción</option>
-                        <option value="aventura">Aventura</option>
-                        <option value="deportes">Deportes</option>
-                        <option value="estrategia">Estrategia</option>
-                    </select>
+    <!-- Catálogo de Videojuegos -->
+    <div class="row">
+        <!-- Ejemplo de videojuego -->
+        <div class="col-md-4 mb-4" th:each="juego : ${juegos}">
+            <div class="card">
+                <!-- Mostrar la imagen cargada desde la base de datos -->
+                <img th:src="${juego.imagen}" class="card-img-top" alt="Imagen del videojuego">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${juego.titulo}"></h5>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" th:data-target="'#gameModal_' + ${juego.id}">Ver más detalles</a>
                 </div>
-                <div class="form-group">
-                    <label for="platform">Plataforma:</label>
-                    <select class="form-control" id="platform">
-                        <option value="">Todas</option>
-                        <option value="pc">PC</option>
-                        <option value="ps4">PS4</option>
-                        <option value="xbox">Xbox</option>
-                        <option value="switch">Switch</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary">Filtrar</button>
-            </form>
+            </div>
         </div>
     </div>
 
-    <!-- Opciones de clasificación y ordenación -->
-    <div class="mb-4">
-        <h5>Ordenar por:</h5>
-        <form>
-            <div class="form-group">
-                <label for="sortBy">Ordenar:</label>
-                <select class="form-control" id="sortBy">
-                    <option value="popularidad">Popularidad</option>
-                    <option value="fecha">Fecha de lanzamiento</option>
-                    <option value="precio">Precio</option>
-                </select>
-            </div>
-        </form>
-    </div>
-    <!-- Tarjetas de videojuegos -->
-    <div class="row destacables">
-        <div class="col-md-4 mb-4" th:each="videojuego : ${videojuegos}">
-            <div class="card">
-                <img th:src="@{${videojuego.imagen}}" class="card-img-top" th:alt="${videojuego.nombre}" alt="Imagen del videojuego">
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${videojuego.nombre}">Nombre del Juego</h5>
-                    <p class="card-text" th:text="${videojuego.descripcion}">Descripción breve del juego.</p>
-                    <p class="card-text"><strong>Género:</strong> <span th:text="${videojuego.genero}">Género del juego</span></p>
-                    <p class="card-text"><strong>Plataforma:</strong> <span th:text="${videojuego.plataforma}">Plataforma del juego</span></p>
-                    <p class="card-text"><strong>Precio:</strong> <span th:text="${videojuego.precio}">Precio del juego</span></p>
-                    <a th:href="@{/videojuego/{id}(id=${videojuego.id})}" class="btn btn-primary">Ver Detalles</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <section class="destacados py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="/imagenes/apexlegends.jpg" class="card-img-top" alt="ApexLegends">
-                        <div class="card-body">
-                            <h5 class="card-title">ApexLegends</h5>
-                        </div>
+    <!-- Modal para detalles del videojuego -->
+    <div th:each="juego : ${juegos}">
+        <div th:id="'gameModal_' + ${juego.id}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gameModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" th:text="${juego.titulo}"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="https://i.blogs.es/a661d4/star-wars/1366_2000.webp" class="card-img-top" alt="Fallen Order">
-                        <div class="card-body">
-                            <h5 class="card-title">Fallen Order</h5>
+                    <div class="modal-body">
+                        <!-- Mostrar el video de YouTube embebido -->
+                        <div class="embed-responsive embed-responsive-16by9 mb-3">
+                            <iframe class="embed-responsive-item" th:src="'https://www.youtube.com/embed/' + ${#strings.substring(juego.video, 17, 28)}" allowfullscreen></iframe>
                         </div>
+                        <p><strong>Descripción:</strong> <span th:text="${juego.descripcion}"></span></p>
+                        <p><strong>Precio:</strong> $<span th:text="${juego.precio}"></span></p>
+                        <p><strong>Requisitos:</strong> <span th:text="${juego.plataforma}"></span></p>
                     </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="/imagenes/marvelH.jpg" class="card-img-top" alt="Marvel Heroes">
-                        <div class="card-body">
-                            <h5 class="card-title">Marvel Heroes</h5>
-                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <a href="#" class="btn btn-primary">Obtener</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Paginación -->
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-                <span class="page-link">Anterior</span>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Siguiente</a>
-            </li>
-        </ul>
-    </nav>
-</div>
+    </div>
+
+
 
 <footer class="py-3">
     <div class="container text-center">

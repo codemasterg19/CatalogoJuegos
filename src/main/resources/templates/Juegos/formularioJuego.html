@@ -63,10 +63,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="imagen">Imagen del Juego</label>
-            <input type="file" th:field="*{imagen}" class="form-control-file" id="imagen" accept="image/*" required>
+            <label for="imagen">URL de la Imagen del Juego</label>
+            <input type="url" th:field="*{imagen}" class="form-control" id="imagen" placeholder="URL de la imagen" required pattern="https?://.+">
             <div class="invalid-feedback">
-                Por favor, cargue una imagen para el juego.
+                Por favor, ingrese una URL válida para la imagen del juego.
             </div>
         </div>
         <div class="form-group">
