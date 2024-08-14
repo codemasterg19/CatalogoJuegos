@@ -21,6 +21,8 @@ public class SeguridadWeb {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.authorizeRequests()
+                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/Juegos/editarJuego", "/Juegos/formularioJuego").hasAuthority("ADMIN") // Protección de las rutas
                 .requestMatchers("/css/**", "/js/**", "/img/**", "/**", "/registro","/login").permitAll()
                 .and()
                 .formLogin(formLogin->
@@ -34,7 +36,9 @@ public class SeguridadWeb {
                 )
                 .logout(logout ->
                         logout.logoutUrl("/logout")
-                                .logoutSuccessUrl("/login")
+                                .logoutSuccessUrl("/login?logout")
+                                .invalidateHttpSession(true)
+                                .deleteCookies("JSESSIONID")
                                 .permitAll()
                 );
 
