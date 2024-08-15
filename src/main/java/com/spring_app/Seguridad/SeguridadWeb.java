@@ -36,6 +36,8 @@ public class SeguridadWeb {
                 .logout(logout ->
                         logout.logoutUrl("/logout")
                                 .logoutSuccessUrl("/login")
+                                .invalidateHttpSession(true) // Asegura que la sesión se invalide.
+                                .deleteCookies("JSESSIONID") // Elimina la cookie de sesión.
                                 .permitAll()
                 )
                 .authorizeRequests(authorizeRequests ->

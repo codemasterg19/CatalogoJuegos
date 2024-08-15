@@ -97,7 +97,10 @@ public class RegistroControlador {
         return "index";
     }
 
-
+    @GetMapping("/logout")
+    public String cerrarSesion() {
+        return "login";
+    }
 
 
     //@PostMapping("/registrarUsuario")

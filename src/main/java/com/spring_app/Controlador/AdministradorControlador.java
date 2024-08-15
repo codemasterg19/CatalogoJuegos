@@ -133,5 +133,9 @@ public class AdministradorControlador {
         }
     }
 
+    @GetMapping("/logout")
+    public String cerrarSesion() {
+        return "login";
+    }
 
 }
