@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edición de Usuarios</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/styleUsers.css"/>
+</head>
+<body>
+<header>
+    <div class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="/">Panel de Administrador</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/dashboard">Panel Inicial</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">Edición de Usuarios</h2>
+
+    <!-- Botón para llamar a otro HTML -->
+    <div class="text-center mb-4">
+        <a href="/admin/formularioUsuario" class="btn btn-primary">Agregar Nuevo Usuario</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Nombre</th>
+                <th>Password</th>
+                <th>User</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="usuario : ${usuarios}">
+                <td th:text="${usuario.id}"></td>
+                <td th:text="${usuario.email}"></td>
+                <td th:text="${usuario.nombre}"></td>
+                <td th:text="${usuario.password}"></td>
+                <td th:text="${usuario.user}"></td>
+                <td th:text="${usuario.rol}"></td>
+                <td>
+                    <!-- Botón para ver detalles del usuario -->
+                    <a th:href="@{/admin/editarUsuario/{id}(id=${usuario.id})}" class="btn btn-primary btn-sm">Actualizar</a>
+                    <a th:href="@{/admin/eliminarU/{id}(id=${usuario.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<footer class="footer mt-auto py-3">
+    <div class="container text-center">
+        <p>&copy; 2024 Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
