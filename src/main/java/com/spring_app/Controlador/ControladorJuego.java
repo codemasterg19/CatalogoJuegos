@@ -26,12 +26,6 @@ public class ControladorJuego {
         return "/Juegos/vistaJuegos";
     }*/
 
-    //Crear
-    @GetMapping("/formularioJuego")
-    public String formularioJuego(Model model){
-        model.addAttribute("juego",new Juego());
-        return "/Juegos/formularioJuego";
-    }
 
     //Leer
     @GetMapping("/juegos")
@@ -41,33 +35,10 @@ public class ControladorJuego {
         return "/Juegos/listarJuegos";
     }
 
-    //Guardar
-    @PostMapping("/guardarJ")
-    public String crearJuego(Juego juego){
-        juegoServicio.guardarJuego(juego);
-        return "redirect:/juegos";
-    }
 
-    //Actualizar
-    @GetMapping("/editarJ/{id}")
-    public String actualizarJuego(@PathVariable Long id,Model model){
-        Optional<Juego> juego = juegoServicio.buscarJuego(id);
-        model.addAttribute("juego",juego);
-        return "/Juegos/formularioJuego";
-    }
 
-    //Eliminar
-    @GetMapping("/eliminarJ/{id}")
-    public String borrarJuego(@PathVariable Long id){
-        juegoServicio.eliminarJuego(id);
-        return "redirect:/juegos";
-    }
 
-    // Nuevo método para catalogoRevision
-    @GetMapping("/editarJuego")
-    public String catalogoRevision(Model model){
-        List<Juego> juegos = juegoServicio.listarJuegos();
-        model.addAttribute("juegos", juegos);
-        return "/Juegos/editarJuego";
-    }
+
+
+
 }

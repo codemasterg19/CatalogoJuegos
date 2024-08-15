@@ -9,7 +9,7 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 <header>
-    <div class="navbar navbar-expand-lg navbar-dark">
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/">Panel de Administrador</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -17,31 +17,98 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/editarJuego">Juegos</a>
+                    <a class="nav-link" href="/logout">Salir</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/editarJuego">Usuarios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/editarJuego">Facturas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/registro">Salir</a>
-                </li>
-
-
             </ul>
         </div>
     </div>
 </header>
 
-<h2>Vista Administrador</h2>
-<a href="/editarJuego">Registrar Juegos</a>
-<a href="/registro">Registro de usuarios</a>
-<a href="/registro">Revision de compras</a>
-<a href="/logout">Logout</a>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Vista Administrador</h2>
 
+    <div class="row">
+        <!-- Card for Juegos -->
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-header bg-primary text-white">
+                    Gestión de Juegos
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Editar, agregar o eliminar juegos del catálogo.</p>
+                    <a href="/admin/editarJuego" class="btn btn-primary">Administrar Juegos</a>
+                </div>
+            </div>
+        </div>
 
+        <!-- Card for Usuarios -->
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-header bg-success text-white">
+                    Gestión de Usuarios
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Administrar las cuentas de los usuarios registrados.</p>
+                    <a href="/admin/editarUsuario" class="btn btn-success">Administrar Usuarios</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card for Compras -->
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-header bg-warning text-white">
+                    Revisión de Compras
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Revisar y gestionar las compras realizadas por los usuarios.</p>
+                    <a href="/admin/revisionCompras" class="btn btn-warning">Revisar Compras</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <!-- Card for Analytics -->
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-header bg-info text-white">
+                    Análisis y Reportes
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Ver estadísticas y generar reportes sobre el rendimiento de la tienda.</p>
+                    <a href="/admin/analisis" class="btn btn-info">Ver Reportes</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card for Configuración -->
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-header bg-secondary text-white">
+                    Configuración
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Configurar las opciones generales del sitio y preferencias del administrador.</p>
+                    <a href="/admin/configuracion" class="btn btn-secondary">Configurar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card for Salir -->
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-header bg-danger text-white">
+                    Salir
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Cerrar sesión en el panel de administración.</p>
+                    <a href="/logout" class="btn btn-danger">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <footer class="py-3 bg-dark text-white mt-auto">
     <div class="container text-center">
