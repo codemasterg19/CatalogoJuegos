@@ -37,8 +37,11 @@ public class SeguridadWeb {
                         logout.logoutUrl("/logout")
                                 .logoutSuccessUrl("/login")
                                 .permitAll()
+                )
+                .authorizeRequests(authorizeRequests ->
+                        authorizeRequests
+                                .anyRequest().authenticated()
                 );
-
 
         return http.build();
     }

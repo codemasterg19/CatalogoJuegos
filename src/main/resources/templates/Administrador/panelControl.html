@@ -17,7 +17,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/logout">Salir</a>
+                    <!-- Formulario para el cierre de sesión -->
+                    <form action="/login" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Salir</button>
+                    </form>
                 </li>
             </ul>
         </div>
@@ -103,7 +106,10 @@
                 </div>
                 <div class="card-body">
                     <p class="card-text">Cerrar sesión en el panel de administración.</p>
-                    <a href="/logout" class="btn btn-danger">Cerrar Sesión</a>
+                    <!-- Formulario para el cierre de sesión -->
+                    <form action="/logout" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
+                    </form>
                 </div>
             </div>
         </div>

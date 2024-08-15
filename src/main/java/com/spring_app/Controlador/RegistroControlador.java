@@ -6,6 +6,9 @@ import com.spring_app.Servicio.UsuarioServicio;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -78,9 +81,19 @@ public class RegistroControlador {
         return "login";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/inicioSesion")
     public String inicioSesion() {
+        // Obtener la autenticación del contexto de seguridad
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        // Verificar si el usuario tiene el rol de ADMIN
+        if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
+            return "redirect:/admin/dashboard"; // Redirige a la página para ADMIN
+        } else if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_USER"))) {
+            return "index"; // Redirige a la página para USER
+        }
+
+        // En caso de que no tenga ninguno de los roles esperados, redirigir a una página predeterminada
         return "index";
     }
 
