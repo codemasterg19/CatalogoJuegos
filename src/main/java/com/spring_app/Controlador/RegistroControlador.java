@@ -37,6 +37,8 @@ public class RegistroControlador {
         return "index";
     }
 
+
+
     @GetMapping("/registro")
     public String formularioAutor(Model model){
         model.addAttribute("usuario",new Usuario());
