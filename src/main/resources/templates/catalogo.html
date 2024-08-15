@@ -42,7 +42,7 @@
         <div class="col-md-4 mb-4" th:each="juego : ${juegos}">
             <div class="card">
                 <!-- Mostrar la imagen cargada desde la base de datos -->
-                <img th:src="${juego.imagen}" class="card-img-top" alt="Imagen del videojuego">
+                <img th:src="${juego.imagen}" class="card-img-top imagen-juego" alt="Imagen del videojuego">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${juego.titulo}"></h5>
                     <a href="#" class="btn btn-primary" data-toggle="modal" th:data-target="'#gameModal_' + ${juego.id}">Ver más detalles</a>

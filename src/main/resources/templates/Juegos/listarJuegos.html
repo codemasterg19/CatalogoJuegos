@@ -33,24 +33,25 @@
 
 <div class="container mt-4 flex-fill">
 
-
     <!-- Título Principal -->
     <h2 class="text-center mb-4">Catálogo de Videojuegos</h2>
 
-    <!-- Catálogo de Videojuegos -->
-    <div class="row">
-        <!-- Ejemplo de videojuego -->
-        <div class="col-md-4 mb-4" th:each="juego : ${juegos}">
-            <div class="card">
-                <!-- Mostrar la imagen cargada desde la base de datos -->
-                <img th:src="${juego.imagen}" class="card-img-top" alt="Imagen del videojuego">
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${juego.titulo}"></h5>
+    <section class="articles">
+        <article th:each="juego : ${juegos}">
+            <div class="article-wrapper">
+                <figure>
+                    <img src="https://picsum.photos/id/1011/800/450" th:src="${juego.imagen}" alt="" />
+                </figure>
+                <div class="article-body">
+                    <h2 th:text="${juego.titulo}"></h2>
                     <a href="#" class="btn btn-primary" data-toggle="modal" th:data-target="'#gameModal_' + ${juego.id}">Ver más detalles</a>
+
                 </div>
             </div>
-        </div>
-    </div>
+        </article>
+    </section>
+
+
 
     <!-- Modal para detalles del videojuego -->
     <div th:each="juego : ${juegos}">
