@@ -30,7 +30,7 @@
     <div class="form-header">
         <h2>Ingreso de Juego</h2>
     </div>
-    <form th:action="@{/guardarJ}" method="post" th:object="${juego}" class="needs-validation" novalidate>
+    <form th:action="@{/admin/guardarJ}" method="post" th:object="${juego}" class="needs-validation" novalidate>
         <div class="form-group">
             <label for="id-codigo">Código del Juego</label>
             <input type="text" th:field="*{id}"  class="form-control" id="id-codigo"  placeholder="Código del juego" required>

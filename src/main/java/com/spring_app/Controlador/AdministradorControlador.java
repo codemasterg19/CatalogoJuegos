@@ -59,15 +59,15 @@ public class AdministradorControlador {
     @PostMapping("/guardarJ")
     public String crearJuego(Juego juego){
         juegoServicio.guardarJuego(juego);
-        return "redirect:/editarJuego";
+        return "redirect:/admin/editarJuego";
     }
 
 
     //Eliminar
-    @GetMapping("/eliminarJ/{id}")
+    @GetMapping("eliminarJ/{id}")
     public String borrarJuego(@PathVariable Long id){
         juegoServicio.eliminarJuego(id);
-        return "redirect:/editarJuego";
+        return "redirect:/admin/editarJuego";
     }
 
 
